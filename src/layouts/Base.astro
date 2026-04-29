@@ -53,6 +53,35 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 
     <!-- Preload hero banner para LCP -->
     <link rel="preload" as="image" href="/img/banner-cover.webp" fetchpriority="high" />
+
+    <!-- JSON-LD: schema.org Person -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jesús David Montalvo",
+      "alternateName": "Jesús Montalvo",
+      "jobTitle": "Redactor freelance",
+      "description": description,
+      "url": canonical,
+      "image": new URL("/img/avatar-jm.webp", Astro.site).toString(),
+      "email": "mailto:jesusmontalvoc15@gmail.com",
+      "knowsLanguage": ["es"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CO"
+      },
+      "knowsAbout": [
+        "Redacción de guiones para YouTube faceless",
+        "Artículos SEO para blogs",
+        "Copywriting para redes sociales",
+        "Storytelling narrativo",
+        "Investigación con fuentes verificables"
+      ],
+      "sameAs": [
+        "https://www.workana.com/freelancer/583341972f6cedda6beb8cada3476d71",
+        "https://github.com/jesusdmc2"
+      ]
+    })} />
   </head>
   <body>
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-[var(--color-surface-inverse)] focus:text-[var(--color-fg-inverse)] focus:px-4 focus:py-2 focus:rounded-md">
