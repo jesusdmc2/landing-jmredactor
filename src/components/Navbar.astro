@@ -1,5 +1,8 @@
 ---
-const mailto = "mailto:jesusmontalvoc15@gmail.com?subject=Proyecto%20de%20redacci%C3%B3n";
+const gmailCompose =
+  "https://mail.google.com/mail/?view=cm&fs=1&to=jesusmontalvoc15@gmail.com&su=Proyecto%20de%20redacci%C3%B3n";
+const mailtoFallback =
+  "mailto:jesusmontalvoc15@gmail.com?subject=Proyecto%20de%20redacci%C3%B3n";
 const links = [
   { href: "#sobre", label: "Sobre mí", caption: "01" },
   { href: "#servicios", label: "Servicios", caption: "02" },
@@ -29,7 +32,13 @@ const links = [
     }
   </nav>
 
-  <a href={mailto} class="btn btn-primary nav-cta" rel="noopener">
+  <a
+    href={gmailCompose}
+    data-mailto={mailtoFallback}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="btn btn-primary nav-cta"
+  >
     Escríbeme
   </a>
 
@@ -56,7 +65,13 @@ const links = [
         </a>
       ))
     }
-    <a href={mailto} class="btn btn-primary nav-menu-cta" rel="noopener">
+    <a
+      href={gmailCompose}
+      data-mailto={mailtoFallback}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn btn-primary nav-menu-cta"
+    >
       Escríbeme
     </a>
   </nav>

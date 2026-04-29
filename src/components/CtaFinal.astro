@@ -1,6 +1,9 @@
 ---
 const workanaUrl = "https://www.workana.com/freelancer/583341972f6cedda6beb8cada3476d71";
-const mailto = "mailto:jesusmontalvoc15@gmail.com?subject=Proyecto%20de%20redacci%C3%B3n";
+const gmailCompose =
+  "https://mail.google.com/mail/?view=cm&fs=1&to=jesusmontalvoc15@gmail.com&su=Proyecto%20de%20redacci%C3%B3n";
+const mailtoFallback =
+  "mailto:jesusmontalvoc15@gmail.com?subject=Proyecto%20de%20redacci%C3%B3n";
 ---
 
 <section id="contacto" class="cta" aria-labelledby="cta-title">
@@ -16,7 +19,13 @@ const mailto = "mailto:jesusmontalvoc15@gmail.com?subject=Proyecto%20de%20redacc
         Respondo en menos de 24 horas con preguntas o propuesta.
       </p>
       <div class="cta-actions">
-        <a href={mailto} class="btn btn-primary" rel="noopener">
+        <a
+          href={gmailCompose}
+          data-mailto={mailtoFallback}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary"
+        >
           Escríbeme
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M5 12h14M13 5l7 7-7 7"/>

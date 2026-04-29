@@ -88,5 +88,25 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
     <main id="main">
       <slot />
     </main>
+
+    <script>
+      // En mobile, usar mailto nativo (abre app de correo) en lugar de
+      // Gmail web. En desktop, mantener Gmail compose URL (abre Gmail
+      // en pestaña nueva sin pasar por el dialogo nativo de "elegir
+      // aplicación de correo").
+      (() => {
+        const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        );
+        if (!isMobile) return;
+        document.querySelectorAll<HTMLAnchorElement>('a[data-mailto]').forEach((a) => {
+          const fallback = a.dataset.mailto;
+          if (!fallback) return;
+          a.href = fallback;
+          a.removeAttribute('target');
+          a.removeAttribute('rel');
+        });
+      })();
+    </script>
   </body>
 </html>
