@@ -1,0 +1,328 @@
+---
+const mailto = "mailto:jesusmontalvoc15@gmail.com?subject=Proyecto%20de%20redacci%C3%B3n";
+const links = [
+  { href: "#sobre", label: "Sobre mí", caption: "01" },
+  { href: "#servicios", label: "Servicios", caption: "02" },
+  { href: "#muestras", label: "Muestras", caption: "03" },
+  { href: "#proceso", label: "Proceso", caption: "04" },
+  { href: "#contacto", label: "Contacto", caption: "05" },
+];
+---
+
+<header class="nav" data-nav role="banner">
+  <a href="#main" class="nav-brand" aria-label="Inicio">
+    <span class="nav-mark display">JM</span>
+    <span class="nav-brand-text">
+      <span class="caption nav-caption">FIG. 000</span>
+      <span class="nav-name">Jesús Montalvo</span>
+    </span>
+  </a>
+
+  <nav class="nav-links" aria-label="Secciones de la página">
+    {
+      links.map((l) => (
+        <a href={l.href} class="nav-link">
+          <span class="caption nav-link-num">{l.caption}</span>
+          <span>{l.label}</span>
+        </a>
+      ))
+    }
+  </nav>
+
+  <a href={mailto} class="btn btn-primary nav-cta" rel="noopener">
+    Escríbeme
+  </a>
+
+  <button
+    type="button"
+    class="nav-toggle"
+    aria-label="Abrir menú"
+    aria-expanded="false"
+    aria-controls="nav-menu"
+    data-nav-toggle
+  >
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+</header>
+
+<div id="nav-menu" class="nav-menu" data-nav-menu hidden>
+  <nav class="nav-menu-list" aria-label="Menú móvil">
+    {
+      links.map((l) => (
+        <a href={l.href} class="nav-menu-item" data-nav-close>
+          <span class="caption nav-menu-num">{l.caption}</span>
+          <span class="display nav-menu-label">{l.label}</span>
+        </a>
+      ))
+    }
+    <a href={mailto} class="btn btn-primary nav-menu-cta" rel="noopener">
+      Escríbeme
+    </a>
+  </nav>
+</div>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1rem clamp(1.25rem, 4vw, 3rem);
+    background: rgba(243, 235, 226, 0.0);
+    border-bottom: 1px solid transparent;
+    transition: background 0.25s ease, border-color 0.25s ease,
+      backdrop-filter 0.25s ease, padding 0.25s ease;
+  }
+
+  .nav[data-scrolled="true"] {
+    background: rgba(243, 235, 226, 0.85);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom-color: rgba(26, 26, 26, 0.08);
+    padding-block: 0.625rem;
+  }
+
+  /* Brand */
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--color-fg);
+  }
+
+  .nav-mark {
+    font-size: 1.875rem;
+    line-height: 1;
+    color: var(--color-fg);
+    letter-spacing: -0.02em;
+  }
+
+  .nav-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .nav-caption {
+    font-size: 9px;
+    margin: 0;
+  }
+
+  .nav-name {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-fg);
+    line-height: 1;
+  }
+
+  /* Desktop links */
+  .nav-links {
+    display: none;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--color-fg-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-fg);
+  }
+
+  .nav-link-num {
+    font-size: 9px;
+    color: var(--color-accent);
+    margin: 0;
+  }
+
+  /* CTA */
+  .nav-cta {
+    display: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  /* Toggle (hamburger) */
+  .nav-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid rgba(26, 26, 26, 0.15);
+    background: transparent;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .nav-toggle:hover {
+    border-color: var(--color-fg);
+  }
+
+  .nav-toggle-bar {
+    width: 16px;
+    height: 1.5px;
+    background: var(--color-fg);
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+
+  .nav[data-open="true"] .nav-toggle-bar:first-child {
+    transform: translateY(3px) rotate(45deg);
+  }
+
+  .nav[data-open="true"] .nav-toggle-bar:last-child {
+    transform: translateY(-3.5px) rotate(-45deg);
+  }
+
+  /* Mobile menu */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 49;
+    background: var(--color-surface);
+    padding: 6rem 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .nav-menu[hidden] {
+    display: none;
+  }
+
+  .nav-menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .nav-menu-item {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--color-fg);
+    padding-block: 0.75rem;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+  }
+
+  .nav-menu-num {
+    color: var(--color-accent);
+    font-size: 11px;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .nav-menu-label {
+    font-size: 1.75rem;
+    line-height: 1.1;
+  }
+
+  .nav-menu-cta {
+    margin-top: 1rem;
+    align-self: flex-start;
+  }
+
+  /* Desktop overrides */
+  @media (min-width: 900px) {
+    .nav-links {
+      display: flex;
+    }
+    .nav-cta {
+      display: inline-flex;
+    }
+    .nav-toggle {
+      display: none;
+    }
+    .nav-menu {
+      display: none !important;
+    }
+  }
+
+  /* Body scroll lock when menu open */
+  :global(body.nav-open) {
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  // Scroll-aware nav background
+  const nav = document.querySelector('[data-nav]') as HTMLElement | null;
+  const toggle = document.querySelector('[data-nav-toggle]') as HTMLButtonElement | null;
+  const menu = document.querySelector('[data-nav-menu]') as HTMLElement | null;
+
+  if (nav) {
+    let ticking = false;
+    const update = () => {
+      const scrolled = window.scrollY > 24;
+      nav.dataset.scrolled = String(scrolled);
+      ticking = false;
+    };
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(update);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+    update();
+  }
+
+  // Mobile menu toggle
+  if (nav && toggle && menu) {
+    const closeMenu = () => {
+      nav.dataset.open = 'false';
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.hidden = true;
+      document.body.classList.remove('nav-open');
+    };
+
+    const openMenu = () => {
+      nav.dataset.open = 'true';
+      toggle.setAttribute('aria-expanded', 'true');
+      menu.hidden = false;
+      document.body.classList.add('nav-open');
+    };
+
+    toggle.addEventListener('click', () => {
+      if (menu.hidden) openMenu();
+      else closeMenu();
+    });
+
+    // Close on link tap
+    document.querySelectorAll('[data-nav-close]').forEach((el) => {
+      el.addEventListener('click', closeMenu);
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.hidden) closeMenu();
+    });
+  }
+</script>
