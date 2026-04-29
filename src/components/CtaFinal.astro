@@ -1,0 +1,100 @@
+---
+const workanaUrl = "https://www.workana.com/freelancer/jesusmontalvo";
+const mailto = "mailto:jesusmontalvoc15@gmail.com?subject=Proyecto%20de%20redacci%C3%B3n";
+---
+
+<section id="contacto" class="cta" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta-card">
+      <p class="caption cta-fig">FIG. 007 · HABLEMOS</p>
+      <h2 id="cta-title" class="display cta-title">
+        Si tienes un proyecto en mente, escríbeme.
+      </h2>
+      <p class="cta-text">
+        Si no estás seguro todavía, también. Cuento con muestras de
+        trabajo que puedo compartir antes de que decidas contratar.
+        Respondo en menos de 24 horas con preguntas o propuesta.
+      </p>
+      <div class="cta-actions">
+        <a href={mailto} class="btn btn-primary" rel="noopener">
+          Escríbeme
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href={workanaUrl} class="btn btn-dark" target="_blank" rel="noopener">
+          Hablemos por Workana
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    background: var(--color-surface);
+  }
+
+  .cta-card {
+    background: var(--color-surface-inverse);
+    color: var(--color-fg-inverse);
+    border-radius: var(--radius-md);
+    padding: clamp(2.5rem, 6vw, 5rem);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-card::before {
+    content: "";
+    position: absolute;
+    top: -8rem;
+    right: -8rem;
+    width: 22rem;
+    height: 22rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 50%;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .cta-fig {
+    color: var(--color-accent);
+    margin: 0 0 1.5rem;
+  }
+
+  .cta-title {
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    color: var(--color-fg-inverse);
+    max-width: 22ch;
+    line-height: 1.1;
+    margin: 0 0 1.5rem;
+  }
+
+  .cta-text {
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.65;
+    font-size: 1.0625rem;
+    max-width: 56ch;
+    margin: 0 0 2rem;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-card .btn-dark {
+    background: transparent;
+    border: 1px solid var(--color-fg-inverse);
+    color: var(--color-fg-inverse);
+  }
+
+  .cta-card .btn-dark:hover {
+    background: var(--color-fg-inverse);
+    color: var(--color-surface-inverse);
+  }
+</style>

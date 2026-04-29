@@ -1,0 +1,136 @@
+---
+import ServicioCard from "./ServicioCard.astro";
+
+const servicios = [
+  {
+    numero: "01",
+    titulo: "Guiones para YouTube faceless",
+    descripcion:
+      "Guiones narrados pensados para text-to-speech. Hooks que aguantan los primeros 30 segundos, frases cortas, entonación natural, y un cierre con CTA. Investigo con fuentes verificables, sin inventar cifras ni citas.",
+    entregables: [
+      "Guion completo en Word o Google Docs",
+      "Hook alterno por si quieres probar A/B",
+      "Descripción optimizada para el video",
+      "3-5 propuestas de título",
+    ],
+    nichos: [
+      "Historia",
+      "Misterio",
+      "Psicología",
+      "Estoicismo",
+      "Crimen",
+      "Mafia y carteles",
+      "Biografías",
+      "Colapsos empresariales",
+    ],
+  },
+  {
+    numero: "02",
+    titulo: "Artículos SEO para blogs",
+    descripcion:
+      "Artículos de 800 a 2.000 palabras con intención de búsqueda clara, encabezados H1-H2-H3 lógicos, y palabra clave principal trabajada de forma natural. Antes de escribir reviso lo que ya está rankeando.",
+    entregables: [
+      "Artículo en Word o Google Docs",
+      "Meta descripción y propuesta de slug",
+      "Imagen de portada sugerida con alt text",
+      "Una ronda de ajustes incluida",
+    ],
+    nichos: [
+      "Gastronomía",
+      "Productividad",
+      "Hábitos",
+      "Historia",
+      "Cultura general",
+      "Educación",
+    ],
+  },
+  {
+    numero: "03",
+    titulo: "Copys para redes sociales",
+    descripcion:
+      "Copys para Instagram, Facebook y TikTok adaptados a cada plataforma. Hook en la primera línea que frene el scroll, desarrollo corto, y un cierre que invite a hacer algo concreto. Trabajo en lotes mensuales o por campaña.",
+    entregables: [
+      "Lote de 8 a 15 copys con hook, cuerpo y CTA",
+      "Hashtags relevantes cuando aplican",
+      "Sugerencia de visual o carrusel",
+      "Primer copy de cortesía como muestra",
+    ],
+    nichos: [
+      "Lifestyle",
+      "Educación",
+      "Marca personal",
+      "Gastronomía",
+      "E-commerce",
+    ],
+  },
+];
+---
+
+<section id="servicios" class="servicios" aria-labelledby="servicios-title">
+  <div class="container">
+    <header class="servicios-header">
+      <p class="caption">FIG. 004 · TRES SERVICIOS</p>
+      <h2 id="servicios-title" class="display servicios-title">
+        Lo que escribo.
+      </h2>
+      <p class="servicios-intro">
+        Tres formatos donde puedo aportar más valor por experiencia y
+        nichos cómodos. Si tu proyecto encaja en uno de estos, hablemos.
+        Si no estás seguro, también.
+      </p>
+    </header>
+
+    <div class="servicios-grid">
+      {servicios.map((s) => <ServicioCard {...s} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .servicios {
+    background: linear-gradient(
+      180deg,
+      var(--color-surface) 0%,
+      rgba(212, 145, 110, 0.06) 100%
+    );
+  }
+
+  .servicios-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 3.5rem;
+    max-width: 56ch;
+  }
+
+  .servicios-title {
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    color: var(--color-fg);
+    margin: 0;
+  }
+
+  .servicios-intro {
+    color: var(--color-fg-secondary);
+    line-height: 1.65;
+    font-size: 1.0625rem;
+    margin: 0;
+  }
+
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 760px) {
+    .servicios-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .servicios-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

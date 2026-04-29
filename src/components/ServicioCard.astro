@@ -1,0 +1,110 @@
+---
+interface Props {
+  numero: string;
+  titulo: string;
+  descripcion: string;
+  entregables: string[];
+  nichos: string[];
+}
+
+const { numero, titulo, descripcion, entregables, nichos } = Astro.props;
+---
+
+<article class="servicio-card">
+  <header class="servicio-header">
+    <span class="caption">SVC. {numero}</span>
+    <h3 class="display servicio-titulo">{titulo}</h3>
+  </header>
+
+  <p class="servicio-desc">{descripcion}</p>
+
+  <div class="servicio-bloque">
+    <p class="caption">Entregables</p>
+    <ul>
+      {entregables.map((item) => <li>{item}</li>)}
+    </ul>
+  </div>
+
+  <div class="servicio-bloque">
+    <p class="caption">Nichos cómodos</p>
+    <p class="servicio-nichos">{nichos.join(" · ")}</p>
+  </div>
+</article>
+
+<style>
+  .servicio-card {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(26, 26, 26, 0.08);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: all 0.25s ease;
+  }
+
+  .servicio-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .servicio-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .servicio-titulo {
+    font-size: 1.5rem;
+    color: var(--color-fg);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .servicio-desc {
+    color: var(--color-fg-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .servicio-bloque {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .servicio-bloque ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .servicio-bloque li {
+    font-size: 0.9375rem;
+    color: var(--color-fg-secondary);
+    line-height: 1.5;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .servicio-bloque li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 8px;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  .servicio-nichos {
+    font-size: 0.875rem;
+    color: var(--color-fg-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+</style>

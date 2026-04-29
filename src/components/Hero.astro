@@ -1,0 +1,173 @@
+---
+const workanaUrl = "https://www.workana.com/freelancer/jesusmontalvo";
+const mailto = "mailto:jesusmontalvoc15@gmail.com?subject=Proyecto%20de%20redacci%C3%B3n";
+---
+
+<section class="hero relative overflow-hidden" aria-labelledby="hero-title">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="/img/banner-cover.webp" alt="" loading="eager" fetchpriority="high" />
+    <div class="hero-tint"></div>
+  </div>
+
+  <div class="container relative z-10 grid">
+    <div class="hero-content">
+      <p class="caption">FIG. 001 · REDACTOR FREELANCE · COLOMBIA</p>
+      <h1 id="hero-title" class="display hero-title">
+        Jesús Montalvo
+      </h1>
+      <p class="hero-tagline">
+        Guiones, artículos y copys con voz humana y research verificado.
+        Español, sin relleno, sin frases de máquina.
+      </p>
+      <div class="hero-ctas">
+        <a href={mailto} class="btn btn-primary" rel="noopener">
+          Escríbeme
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href={workanaUrl} class="btn btn-secondary" target="_blank" rel="noopener">
+          Hablemos por Workana
+        </a>
+      </div>
+    </div>
+
+    <aside class="hero-badge" aria-label="Estado de disponibilidad">
+      <p class="caption hero-badge-fig">FIG. 002</p>
+      <div class="hero-badge-card">
+        <span class="hero-badge-kicker">DISPONIBLE</span>
+        <p class="hero-badge-line">Aceptando proyectos</p>
+        <p class="hero-badge-line">en español</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 78vh;
+    display: flex;
+    align-items: center;
+    padding-block: clamp(5rem, 10vw, 8rem);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.45;
+  }
+
+  .hero-tint {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(243, 235, 226, 0.92) 0%,
+      rgba(243, 235, 226, 0.78) 100%
+    );
+  }
+
+  .container.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .container.grid {
+      grid-template-columns: 1.4fr 1fr;
+    }
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    color: var(--color-fg);
+    margin: 0;
+  }
+
+  .hero-tagline {
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+    color: var(--color-fg-secondary);
+    line-height: 1.55;
+    max-width: 56ch;
+    margin: 0;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.75rem;
+  }
+
+  .hero-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+  }
+
+  .hero-badge-fig {
+    margin: 0;
+  }
+
+  .hero-badge-card {
+    background: var(--color-surface-inverse);
+    color: var(--color-fg-inverse);
+    padding: 1.5rem 1.75rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 14rem;
+  }
+
+  .hero-badge-kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: var(--tracking-caption);
+    color: var(--color-accent);
+    margin-bottom: 0.4rem;
+  }
+
+  .hero-badge-line {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  /* Decorative arc — top right, subtle */
+  .hero::after {
+    content: "";
+    position: absolute;
+    top: -10rem;
+    right: -8rem;
+    width: 24rem;
+    height: 24rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 50%;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  @media (max-width: 600px) {
+    .hero::after { width: 16rem; height: 16rem; top: -6rem; right: -6rem; }
+    .hero-badge { align-items: flex-start; }
+  }
+</style>

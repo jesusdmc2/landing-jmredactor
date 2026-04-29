@@ -1,0 +1,98 @@
+---
+---
+
+<section id="sobre" class="sobre" aria-labelledby="sobre-title">
+  <div class="container sobre-grid">
+    <div class="sobre-side">
+      <p class="caption">FIG. 003 · SOBRE MÍ</p>
+      <div class="sobre-mark" aria-hidden="true">JM</div>
+    </div>
+
+    <div class="sobre-text">
+      <h2 id="sobre-title" class="display sobre-title">
+        Hola, soy Jesús.
+      </h2>
+
+      <p>
+        Vengo del sector bancario y administrativo, y hoy me dedico a
+        escribir para quienes no tienen tiempo de hacerlo ellos mismos.
+        Me especializo en tres cosas: guiones para canales de YouTube
+        sin cara (historia, negocios, curiosidades, casos), artículos
+        de blog optimizados para buscadores, y copys para redes
+        sociales.
+      </p>
+
+      <p>
+        Mi forma de trabajar parte de una idea simple: antes de
+        escribir hay que entender. Investigo el tema, reviso qué ya
+        está circulando, y recién entonces armo el texto. Nada de
+        párrafos de relleno para llegar a la cuenta de palabras. Cada
+        bloque tiene que ganarse el derecho a estar ahí.
+      </p>
+
+      <p>
+        Lo que puedo prometer: comunicación directa, una ronda de
+        ajustes incluida en todos los servicios, y entrega en el
+        formato que necesites. Lo que no voy a hacer: prometer que
+        duplico tus views en una semana o que el primer artículo va a
+        ranquear en Google en tres días. Ese tipo de promesas las
+        hacen los que no van a estar cuando no se cumplen.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sobre {
+    background: var(--color-surface);
+    border-top: 1px solid rgba(26, 26, 26, 0.08);
+  }
+
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .sobre-grid {
+      grid-template-columns: 1fr 2fr;
+      gap: 5rem;
+    }
+  }
+
+  .sobre-side {
+    position: sticky;
+    top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .sobre-mark {
+    font-family: var(--font-display);
+    font-size: clamp(7rem, 14vw, 11rem);
+    line-height: 0.9;
+    color: var(--color-accent);
+    opacity: 0.85;
+  }
+
+  .sobre-title {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    color: var(--color-fg);
+    margin: 0 0 1.5rem;
+  }
+
+  .sobre-text p {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--color-fg-secondary);
+    margin: 0 0 1.25rem;
+    max-width: 62ch;
+  }
+
+  .sobre-text p:last-child {
+    margin-bottom: 0;
+  }
+</style>

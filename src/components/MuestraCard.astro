@@ -1,0 +1,132 @@
+---
+interface Props {
+  numero: string;
+  tipo: string;
+  titulo: string;
+  descripcion: string;
+  longitud: string;
+  imagen: string;
+  archivo: string;
+}
+
+const { numero, tipo, titulo, descripcion, longitud, imagen, archivo } =
+  Astro.props;
+---
+
+<article class="muestra-card">
+  <a href={archivo} class="muestra-link" target="_blank" rel="noopener" aria-label={`Descargar ${titulo}`}>
+    <div class="muestra-img-wrap">
+      <img src={imagen} alt={`Portada de ${titulo}`} loading="lazy" decoding="async" />
+    </div>
+    <div class="muestra-body">
+      <header class="muestra-header">
+        <span class="caption">{numero} · {tipo}</span>
+        <h3 class="display muestra-titulo">{titulo}</h3>
+      </header>
+      <p class="muestra-desc">{descripcion}</p>
+      <footer class="muestra-footer">
+        <span class="muestra-meta">{longitud}</span>
+        <span class="muestra-cta">
+          Descargar
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+          </svg>
+        </span>
+      </footer>
+    </div>
+  </a>
+</article>
+
+<style>
+  .muestra-card {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(26, 26, 26, 0.08);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all 0.25s ease;
+  }
+
+  .muestra-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .muestra-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .muestra-img-wrap {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--color-surface-inverse);
+  }
+
+  .muestra-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .muestra-card:hover .muestra-img-wrap img {
+    transform: scale(1.04);
+  }
+
+  .muestra-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    flex: 1;
+  }
+
+  .muestra-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .muestra-titulo {
+    font-size: 1.25rem;
+    color: var(--color-fg);
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  .muestra-desc {
+    color: var(--color-fg-secondary);
+    line-height: 1.55;
+    font-size: 0.9375rem;
+    margin: 0;
+    flex: 1;
+  }
+
+  .muestra-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.875rem;
+    border-top: 1px solid rgba(26, 26, 26, 0.08);
+  }
+
+  .muestra-meta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-fg-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .muestra-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-accent);
+  }
+</style>

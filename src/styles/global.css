@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+/* Fontsource imports */
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/500.css";
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource-variable/inter/index.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+/* === Editorial Scientific design tokens (heredados de Pencil) === */
+@theme {
+  --color-surface: #f3ebe2;
+  --color-surface-inverse: #1a1a1a;
+  --color-fg: #1a1a1a;
+  --color-fg-secondary: #3d3d3d;
+  --color-fg-muted: #6b6b6b;
+  --color-fg-inverse: #ffffff;
+  --color-accent: #d4916e;
+  --color-accent-hover: #b87654;
+
+  --font-display: "Playfair Display", "Times New Roman", serif;
+  --font-sans: "Inter Variable", "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Code", monospace;
+
+  --radius-sm: 0;
+  --radius-md: 6px;
+  --radius-full: 9999px;
+
+  --shadow-lg: 0 1px 3px rgba(0, 0, 0, 0.03), 0 8px 24px rgba(0, 0, 0, 0.04);
+
+  --tracking-caption: 0.2em;
+}
+
+/* === Base styles === */
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: "ss01", "ss02";
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus ring accesible */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* === Utilities === */
+.caption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--tracking-caption);
+  text-transform: uppercase;
+  color: var(--color-fg-muted);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-fg-inverse);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-fg);
+  border: 1px solid var(--color-fg);
+  border-radius: var(--radius-full);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-fg);
+  color: var(--color-fg-inverse);
+}
+
+.btn-dark {
+  background-color: var(--color-surface-inverse);
+  color: var(--color-fg-inverse);
+}
+
+.btn-dark:hover {
+  background-color: #000;
+  transform: translateY(-1px);
+}
+
+/* Section rhythm */
+section {
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* Tick ruler decoration */
+.ruler {
+  position: relative;
+  height: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.ruler::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-fg-muted);
+  opacity: 0.25;
+}
+
+.ruler span {
+  width: 1px;
+  background: var(--color-fg-muted);
+  opacity: 0.5;
+}
+
+.ruler span:nth-child(5n) {
+  height: 12px;
+}
+
+.ruler span:not(:nth-child(5n)) {
+  height: 6px;
+}
