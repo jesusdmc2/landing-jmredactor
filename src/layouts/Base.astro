@@ -51,8 +51,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
     <!-- Cloudflare Web Analytics (cookieless) -->
     <!-- TODO: añadir token tras el primer deploy -->
 
-    <!-- Preload hero banner para LCP -->
-    <link rel="preload" as="image" href="/img/banner-cover.webp" fetchpriority="high" />
 
     <!-- JSON-LD: schema.org Person -->
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
