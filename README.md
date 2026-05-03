@@ -32,7 +32,7 @@ src/
 
 public/
 ├── img/                       # webp optimizados de banner, avatar, portadas
-├── muestras/                  # 5 .docx descargables (TODO: convertir a PDF)
+├── muestras/                  # 5 .pdf descargables (regenerados con scripts/docx-to-pdf-edge.mjs)
 ├── og-image.png               # 1200×630 para WhatsApp/LinkedIn
 ├── favicon.svg / .ico
 └── robots.txt
@@ -85,9 +85,10 @@ Cloudflare Pages detecta el push y rebuilda automáticamente. La URL `https://jm
 
 ## Cómo añadir muestra nueva
 
-1. Pon el `.docx` en `public/muestras/<slug>.docx`.
-2. Pon la portada en `public/img/portada-<slug>.webp` (usa `sharp` para optimizar; ver `scripts/optimize-assets.mjs`).
-3. Añade un objeto al array `muestras` en `src/components/Muestras.astro`:
+1. Mantén el `.docx` fuente en Cowork (no lo subas a `public/muestras/`).
+2. Añádelo al array `mappings` en `scripts/docx-to-pdf-edge.mjs` y corre `node scripts/docx-to-pdf-edge.mjs` desde la raíz del repo. Genera el `.pdf` directo en `public/muestras/`.
+3. Pon la portada en `public/img/portada-<slug>.webp` (usa `sharp` para optimizar; ver `scripts/optimize-assets.mjs`).
+4. Añade un objeto al array `muestras` en `src/components/Muestras.astro`:
 
 ```js
 {
@@ -97,11 +98,17 @@ Cloudflare Pages detecta el push y rebuilda automáticamente. La URL `https://jm
   descripcion: "Descripción de 1-2 líneas.",
   longitud: "≈ 1.500 palabras",
   imagen: "/img/portada-tu-slug.webp",
-  archivo: "/muestras/tu-slug.docx",
+  archivo: "/muestras/tu-slug.pdf",
 }
 ```
 
-4. Commit + push.
+5. Commit + push.
+
+### Conversión DOCX → PDF (notas operativas)
+
+El script `scripts/docx-to-pdf-edge.mjs` usa `mammoth` (DOCX → HTML) + Microsoft Edge headless (`--headless=new --print-to-pdf`). Tarda ~8s para los 5 archivos y no requiere instalar Chromium ni LibreOffice. Mantiene la tipografía Editorial Scientific en el PDF.
+
+Si Edge no está disponible o quieres reusar Word, `scripts/docx-to-pdf.ps1` aplica `Unblock-File` + `AutomationSecurity = msoAutomationSecurityForceDisable` para evitar el cuelgue por Vista Protegida — pero en este equipo Word seguía colgando, así que la ruta confiable es la de Edge.
 
 ## REGLA DE ORO (no negociable)
 
@@ -115,7 +122,6 @@ Antes de añadir cualquier copy nuevo a la landing:
 
 ## Pendientes conocidos
 
-- [ ] **Convertir las 5 muestras de DOCX a PDF.** Microsoft Word COM colgó en el primer intento (vista protegida). Alternativas: usar libreoffice headless (instalación pendiente), o `mammoth` + Puppeteer para HTML→PDF.
 - [ ] **Cloudflare Web Analytics token** en `src/layouts/Base.astro` (placeholder marcado con `TODO:`). Configurar tras primer deploy.
 - [ ] **Custom domain** (`jesusmontalvo.com` u similar) cuando haya runway para el registro (~USD 10/año).
 
